@@ -20,7 +20,7 @@ build_number = os.environ['BUILD_NUMBER']
 # This call to setup() does all the work
 setup(
     name="${package_name}",
-    version="1.0.%d"%build_number,
+    version="1.0.%s"%build_number,
     description="This is a copy of realpython-reader",
     long_description=README,
     long_description_content_type="text/markdown",
