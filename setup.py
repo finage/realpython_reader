@@ -14,13 +14,13 @@ README = (HERE / "README.md").read_text()
 
 # This call to setup() does all the work
 setup(
-    name="mykobor-result",
-    version="1.0.0",
+    name="$package_name",
+    version="1.0.$BUILD_NUMBER",
     description="This is a copy of realpython-reader",
     long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/finage/realpython_reader",
-    author="Mykola Copypaste",
+    author="Mykola Copypaster",
     author_email="mykola@test.com",
     license="MIT",
     classifiers=[
