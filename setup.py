@@ -14,14 +14,14 @@ README = (HERE / "README.md").read_text()
 
 # This call to setup() does all the work
 setup(
-    name="realpython-reader",
+    name="mykobor-result",
     version="1.0.0",
-    description="Read the latest Real Python tutorials",
+    description="This is a copy of realpython-reader",
     long_description=README,
     long_description_content_type="text/markdown",
-    url="https://github.com/realpython/reader",
-    author="Real Python",
-    author_email="info@realpython.com",
+    url="https://github.com/finage/realpython_reader",
+    author="Mykola Copypaste",
+    author_email="mykola@test.com",
     license="MIT",
     classifiers=[
         "License :: OSI Approved :: MIT License",
