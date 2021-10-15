@@ -2,6 +2,7 @@
 
 # Standard library imports
 import pathlib
+import os
 
 # Third party imports
 from setuptools import setup
@@ -12,10 +13,14 @@ HERE = pathlib.Path(__file__).resolve().parent
 # The text of the README file is used as a description
 README = (HERE / "README.md").read_text()
 
+# Variables
+package_name = os.environ['PACKAGE_NAME']
+build_number = os.environ['BUILD_NUMBER']
+
 # This call to setup() does all the work
 setup(
-    name="$package_name",
-    version="1.0.$BUILD_NUMBER",
+    name="${package_name}",
+    version="1.0.${build_number}",
     description="This is a copy of realpython-reader",
     long_description=README,
     long_description_content_type="text/markdown",
