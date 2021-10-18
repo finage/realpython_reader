@@ -1,10 +1,7 @@
 FROM python as tmp_image
 ARG version 
 ARG package_name
-#RUN python -m pip install twine feedparser html2text
-#RUN pip install -i https://test.pypi.org/simple/ "$package_name"=="$version"
-RUN echo "$version"
-RUN echo "$package_name"
-
-FROM tmp_image
+RUN python -m pip install twine feedparser html2text
 RUN pip install -i https://test.pypi.org/simple/ "$package_name"=="$version"
+#RUN echo "$version"
+#RUN echo "$package_name"
