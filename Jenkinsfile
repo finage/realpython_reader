@@ -1,19 +1,34 @@
+
 pipeline {
-    agent { 
-    //  dockerfile true
-       docker {image 'python_package_build'}
-    }
+    agent any
     
     environment {
-        HOME = "${env.WORKSPACE}"
+        //HOME = "${env.WORKSPACE}"
+        imageName = "finage/python_build"
+        dockerImage = "${imageName}:${version}"
     }
 
     stages {
-        stage('Install') {
+        /*stage('Pull branch') {
             steps {
-                echo "Installing package..."
-                //sh "python3 -m pip install --upgrade pip"
-                sh "python3 -m pip install -i https://test.pypi.org/simple/ '$PACKAGE_NAME'==1.0.'$BUILD_NUMBER'"
+                git branch: "master", url: 'https://github.com/finage/realpython_reader'
+            }
+        }*/
+        stage('image build'){
+            steps {
+                script {
+                    dockerImage = docker.build ("${imageName}:${version}", "--build-arg version=$version --build-arg package_name=$PACKAGE_NAME .")
+                } 
+            }
+        }
+        stage('deploy image') {
+            steps{
+                script {
+                    docker.withRegistry('', 'docker_hub') {
+                        dockerImage.push("$BUILD_NUMBER")
+                        dockerImage.push('latest')
+                    }
+                }
             }
         }
     }
@@ -21,13 +36,13 @@ pipeline {
     post {
         success {
             echo "${env.BUILD_URL} has result success"
-            echo "Cleaning working directory..."
-            cleanWs()
         }
         failure {
             echo "${env.BUILD_URL} has result fail"
+        }
+        always {
             echo "Cleaning working directory..."
-            cleanWs()
+            cleanWs()   
         }
     }
 }
