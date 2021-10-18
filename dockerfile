@@ -1,3 +1,3 @@
 FROM python
 RUN python -m pip install twine feedparser html2text
-WORKDIR /app
+RUN pip install -i https://test.pypi.org/simple/ $PACKAGE_NAME==$version
