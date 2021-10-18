@@ -2,6 +2,8 @@ This text was added by Mykola via using of dev branch.
 
 Also I added this text in dev branch.
 
+trigger test
+
 # Real Python Feed Reader
 
 The Real Python Feed Reader is a basic [web feed](https://en.wikipedia.org/wiki/Web_feed) reader that can download the latest Real Python tutorials from the [Real Python feed](https://realpython.com/contact/#rss-atom-feed).
