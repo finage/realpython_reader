@@ -15,12 +15,14 @@ README = (HERE / "README.md").read_text()
 
 # Variables
 package_name = os.environ['PACKAGE_NAME']
-build_number = os.environ['BUILD_NUMBER']
+#build_number = os.environ['BUILD_NUMBER']
+build_version = os.environ['version']
 
 # This call to setup() does all the work
 setup(
     name="%s"%package_name,
-    version="1.0.%s"%build_number,
+    #version="1.0.%s"%build_number,
+    version="%s"%build_version,
     description="This is a copy of realpython-reader",
     long_description=README,
     long_description_content_type="text/markdown",
